@@ -160,45 +160,6 @@ public class MusicActivity extends AppCompatActivity {
                 setTextMusic( );
             }
         });
-        list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener( ) {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-
-                    MusicDTO musicDTO = songArrayList.get(position);
-                    androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(MusicActivity.this);
-                    builder.setTitle("Bạn có muốn thêm/xóa bài nhạc yêu thích");
-                    builder.setNegativeButton("Thêm", new DialogInterface.OnClickListener( ) {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            if (checkFMusic(musicDTO.name)) {
-                                Intent intent = new Intent(MusicActivity.this, PlayMusicService.class);
-                                intent.putExtra("type", 2);
-                                intent.putExtra("name", musicDTO.name);
-                                startService(intent);
-                                Toast.makeText(MusicActivity.this, "Thêm thành công", Toast.LENGTH_SHORT).show( );
-                            } else {
-                                Toast.makeText(MusicActivity.this, "Bài nhạc đã có trong list nhạc yêu thích", Toast.LENGTH_SHORT).show( );
-                            }
-                        }
-                    });
-                    builder.setPositiveButton("Xóa", new DialogInterface.OnClickListener( ) {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            if (!checkFMusic(musicDTO.name)) {
-                                Intent intent = new Intent(MusicActivity.this, PlayMusicService.class);
-                                intent.putExtra("type", 3);
-                                intent.putExtra("name", musicDTO.name);
-                                startService(intent);
-                                Toast.makeText(MusicActivity.this, "Xóa thành công", Toast.LENGTH_SHORT).show( );
-                            } else {
-                                Toast.makeText(MusicActivity.this, "Bài nhạc không tồn tại có trong list nhạc yêu thích", Toast.LENGTH_SHORT).show( );
-                            }
-                        }
-                    });
-                    builder.create( ).show( );
-                return false;
-            }
-        });
     }
 
     private boolean checkFMusic(String name) {

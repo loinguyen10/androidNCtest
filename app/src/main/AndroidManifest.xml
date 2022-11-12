@@ -51,7 +51,7 @@
                 android:value="" />
         </activity>
 
-        <service android:name=".Service.Play_Music_Service"/>
+        <service android:name=".Music.PlayMusicService"/>
     </application>
 
 </manifest>
