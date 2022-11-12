@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         loadAnime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,NewsActivity.class));
+                startActivity(new Intent(MainActivity.this,AnimationActivity.class));
             }
         });
 
