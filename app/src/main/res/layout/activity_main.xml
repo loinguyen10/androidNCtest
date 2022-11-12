@@ -38,4 +38,16 @@
         android:id="@+id/loadMap"
         android:text="load Map"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/loadMapNow"
+        android:text="load chỗ hiện tại"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="mapNow"
+        android:id="@+id/txtNow"/>
+
 </LinearLayout>
