@@ -1,4 +1,4 @@
-package com.laiapplvup.myapplication;
+package com.laiapplvup.myapplication.News;
 
 public class Entry {
     String id,title,link,description,date;

@@ -1,4 +1,4 @@
-package com.laiapplvup.myapplication;
+package com.laiapplvup.myapplication.News;
 
 import android.util.Log;
 
