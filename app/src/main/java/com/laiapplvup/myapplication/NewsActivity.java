@@ -19,6 +19,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.laiapplvup.myapplication.News.Entry;
+import com.laiapplvup.myapplication.News.NewsLoader;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
