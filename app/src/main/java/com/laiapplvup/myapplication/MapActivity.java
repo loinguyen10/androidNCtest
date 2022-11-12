@@ -103,7 +103,9 @@ public class MapActivity extends AppCompatActivity {
 
                         Log.d(TAG, "map: " + x.getLocation());
                         Intent openMap = new Intent(Intent.ACTION_VIEW);
-                        openMap.setData(Uri.parse("geo:"+x.getLocation()));
+                        String msg1 = "http://www.google.com/maps/search/" + x.getLocation();
+                        Log.d(TAG, "map: " + msg1);
+                        openMap.setData(Uri.parse(""+msg1));
                         Intent mapOpen = Intent.createChooser(openMap,"Open Map");
                         startActivity(mapOpen);
                     }

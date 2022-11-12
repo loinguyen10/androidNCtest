@@ -35,6 +35,8 @@ public class AddMapActivity extends AppCompatActivity {
                 String ten = txtAddMapName.getText().toString();
                 String viTri = txtAddMapLocation.getText().toString().trim();
 
+//
+
                 if(ten.length() > 10){
                     Toast.makeText(AddMapActivity.this,"Tên phải trên 10 ký tự",Toast.LENGTH_SHORT).show();
                 }else{
