@@ -1,6 +1,9 @@
 package com.laiapplvup.myapplication.News;
 
+import android.content.Context;
 import android.util.Log;
+
+import com.laiapplvup.myapplication.NewsDB;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -16,8 +19,10 @@ public class NewsLoader {
     Entry tinTuc;
     public static final ArrayList<String> titleList = new ArrayList<>();
     String textContent;
+    NewsDB newsDB;
 
-    public List<Entry> getTinTucList(InputStream inputStream) {
+    public List<Entry> getTinTucList(InputStream inputStream, Context context) {
+        newsDB = new NewsDB(context);
         try {
             XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
             XmlPullParser parser = factory.newPullParser();
@@ -41,10 +46,13 @@ public class NewsLoader {
                         if (tinTuc != null) {
                             if (tagName.equalsIgnoreCase("item")) {
                                 tinTucList.add(tinTuc);
+
                             }
                             if (tagName.equalsIgnoreCase("title")) {
                                 tinTuc.setTitle(textContent);
+
                                 titleList.add(textContent);
+
                             }
                             if (tagName.equalsIgnoreCase("link")) {
                                 tinTuc.setLink(textContent);
@@ -62,7 +70,10 @@ public class NewsLoader {
                             if (tagName.equalsIgnoreCase("pubDate")) {
                                 tinTuc.setDate(textContent.substring(0,25));
                             }
+                            //them vao db
+//                            newsDB.insertTK(tinTuc);
                         } break;
+
                     }
                     default: {
                         Log.d("zzzz", "eventType khác: " + eventType + ", tag = " + tagName);

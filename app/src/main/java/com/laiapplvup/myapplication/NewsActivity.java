@@ -38,16 +38,22 @@ public class NewsActivity extends AppCompatActivity {
     Button find;
     EditText txtType;
     ListView listBaoMoi;
+    NewsDB newsDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
-
+        newsDB = new NewsDB(this);
         listBaoMoi = findViewById(R.id.listBaoMoi);
         find = findViewById(R.id.findButton);
         txtType = findViewById(R.id.txtType);
+        findViewById(R.id.count).setOnClickListener(v -> {
+            ArrayList<Entry> list = new ArrayList<>();
+            list = (ArrayList<Entry>) newsDB.getAllTK();
+            Toast.makeText(this,""+list.size(), Toast.LENGTH_SHORT).show();
 
+        });
 //        Bundle extra = getIntent().getExtras();
 //        linkx = extra.getString("YourLinkxy");
 //
@@ -152,7 +158,13 @@ public class NewsActivity extends AppCompatActivity {
                 urlConnection.connect();
                 if (urlConnection.getResponseCode() == 200) {
                     InputStream inputStream = urlConnection.getInputStream();
-                    list = loader.getTinTucList(inputStream);
+                    list = loader.getTinTucList(inputStream,NewsActivity.this);
+                    //add 5 thang
+                    newsDB.insertTK(list.get(0));
+                    newsDB.insertTK(list.get(1));
+                    newsDB.insertTK(list.get(2));
+                    newsDB.insertTK(list.get(3));
+                    newsDB.insertTK(list.get(4));
                 }
             } catch (MalformedURLException e) {
                 e.printStackTrace();

@@ -109,6 +109,7 @@ public class MusicActivity extends AppCompatActivity {
         intent.putExtra("uri", musicDTO.file_path);
         intent.putExtra("index", index);
         this.startService(intent);
+
     }
 
     void prevMusic() {

@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Handler;
 import android.os.IBinder;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
@@ -86,6 +87,7 @@ public class PlayMusicService extends Service {
         if (myMusicPlayer == null) {
             myMusicPlayer = MediaPlayer.create(getApplicationContext( ), uri);
             myMusicPlayer.start( );
+            Toast.makeText(this, "chay service", Toast.LENGTH_SHORT).show();
 
             runnable.run();
             myMusicPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener( ) {
